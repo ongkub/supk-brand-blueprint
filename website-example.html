@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>ตัวอย่างเว็บไซต์ — ครูซุปเค (Sup'K)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800&family=Sarabun:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/brand.css">
+<style>
+  /* page-only styles for the Home-page mockup inside the browser frame */
+  .mock-dots span{width:10px;height:10px;border-radius:50%;display:inline-block;}
+  .mock-dots span:nth-child(1){background:#E9564F;}
+  .mock-dots span:nth-child(2){background:#F2C230;}
+  .mock-dots span:nth-child(3){background:#3FA34D;}
+
+  .mock-page{font-family:'Sarabun',sans-serif;}
+  .mock-nav{display:flex; align-items:center; justify-content:space-between; padding:14px 26px; background:var(--navy);}
+  .mock-nav .m-logo{display:flex; align-items:center; gap:8px; font-family:'Kanit'; font-weight:700; color:var(--white); font-size:15px;}
+  .mock-nav .m-logo .dot{width:22px;height:22px;border-radius:6px;background:var(--yellow);display:flex;align-items:center;justify-content:center;color:var(--navy);font-size:11px;font-weight:800;transform:rotate(-4deg);}
+  .mock-nav .m-links{display:flex; gap:20px;}
+  .mock-nav .m-links span{color:#C9D3E6; font-size:12.5px;}
+  .mock-nav .m-cta{background:var(--yellow); color:var(--navy); font-family:'Kanit'; font-weight:600; font-size:12px; padding:8px 16px; border-radius:100px;}
+
+  .mock-hero{
+    background:radial-gradient(circle at 12% 15%, rgba(255,204,0,0.3), transparent 40%),
+               radial-gradient(circle at 90% 85%, rgba(79,184,232,0.25), transparent 45%),
+               var(--navy);
+    padding:44px 26px; display:flex; align-items:center; gap:30px; flex-wrap:wrap;
+  }
+  .mock-hero .txt{flex:1; min-width:240px;}
+  .mock-hero .badge{display:inline-block; background:rgba(255,204,0,0.14); border:1px solid rgba(255,204,0,0.5); color:var(--yellow); font-size:10.5px; font-weight:600; padding:4px 11px; border-radius:100px; margin-bottom:12px;}
+  .mock-hero h2{color:var(--white); font-family:'Kanit'; font-weight:800; font-size:26px; line-height:1.25; margin:0;}
+  .mock-hero h2 span{color:var(--yellow);}
+  .mock-hero p{color:#C9D3E6; font-size:13px; margin:12px 0 0; max-width:320px;}
+  .mock-hero .m-btns{display:flex; gap:10px; margin-top:18px; flex-wrap:wrap;}
+  .mock-hero .m-btn-p{background:var(--yellow); color:var(--navy); font-family:'Kanit'; font-weight:600; font-size:12px; padding:9px 18px; border-radius:100px;}
+  .mock-hero .m-btn-o{border:1.5px solid rgba(255,255,255,0.5); color:var(--white); font-family:'Kanit'; font-weight:600; font-size:12px; padding:9px 18px; border-radius:100px;}
+  .mock-hero .m-trust{display:flex; gap:14px; margin-top:20px; flex-wrap:wrap;}
+  .mock-hero .m-trust div{color:#9FB0CC; font-size:11px; border-left:2px solid rgba(255,255,255,0.25); padding-left:8px;}
+  .mock-hero .m-trust b{display:block; color:var(--yellow); font-family:'Kanit'; font-size:11.5px;}
+  .mock-hero .m-photo{
+    width:150px; height:150px; border-radius:16px; flex-shrink:0; position:relative; overflow:hidden;
+    box-shadow:inset 0 0 0 2px rgba(255,255,255,0.18);
+  }
+  .real-tag{position:absolute; left:8px; bottom:8px; background:rgba(22,35,63,0.85); color:var(--yellow); font-family:'Kanit'; font-weight:600; font-size:9px; padding:3px 8px; border-radius:100px;}
+
+  .mock-eq{background:var(--cream); padding:26px; display:flex; justify-content:center; gap:8px; flex-wrap:wrap;}
+  .mock-eq span{font-family:'Kanit'; font-weight:600; font-size:11.5px; color:var(--navy); background:var(--white); border:1px dashed var(--warm-gray); padding:6px 11px; border-radius:8px;}
+  .mock-eq em{color:var(--orange); font-style:normal; font-size:12px;}
+
+  .mock-section{padding:30px 26px; background:var(--white);}
+  .mock-section.alt{background:var(--yellow-pale);}
+  .mock-section .m-kicker{font-family:'Kanit'; font-size:10.5px; letter-spacing:1px; text-transform:uppercase; color:var(--orange); font-weight:700;}
+  .mock-section h3{font-family:'Kanit'; font-size:18px; color:var(--navy); margin:6px 0 16px;}
+  .m-card-row{display:grid; grid-template-columns:repeat(3,1fr); gap:10px;}
+  .m-card{border-radius:10px; overflow:hidden; border:1px solid var(--warm-gray-soft); background:var(--white);}
+  .m-card .top{aspect-ratio:3/2; height:auto;}
+  .m-card .body{padding:9px 10px;}
+  .m-card .body b{display:block; font-family:'Kanit'; font-size:11px; color:var(--navy);}
+  .m-card .body span{font-size:9.5px; color:var(--warm-gray);}
+
+  .m-quote{background:var(--navy); border-left:4px solid var(--yellow); border-radius:10px; padding:16px 18px;}
+  .m-quote p{font-family:'Kanit'; color:var(--white); font-size:13px; margin:0;}
+  .m-quote span{color:var(--yellow); font-size:10.5px; display:block; margin-top:8px;}
+
+  .mock-footer{background:var(--charcoal); color:#C9C2B4; text-align:center; padding:18px; font-size:10.5px;}
+  .mock-footer b{color:var(--yellow); font-family:'Kanit';}
+
+  /* before mockup — current site */
+  .before-mock{background:#fff;}
+  .before-nav{display:flex; align-items:center; justify-content:space-between; padding:10px 20px; background:#fff; border-bottom:1px solid #eee; flex-wrap:wrap; gap:8px;}
+  .before-nav .b-logo{display:flex; align-items:center; gap:6px; font-family:'Kanit'; font-weight:700; color:#E9564F; font-size:13px;}
+  .before-nav .b-links{display:flex; gap:10px; flex-wrap:wrap;}
+  .before-nav .b-links span{font-size:10px; color:#555;}
+  .before-hero{background:#000; line-height:0;}
+  .before-hero img{width:100%; display:block;}
+  .before-search{background:#f3f3f3; padding:14px 20px;}
+  .before-search .b-bar{background:#fff; border:1px solid #ddd; border-radius:4px; padding:10px; font-size:10.5px; color:#999;}
+  .m-quote-row{display:flex; gap:12px; align-items:center;}
+  .m-quote-avatar{width:44px; height:44px; border-radius:50%; flex-shrink:0;}
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a class="brand" href="index.html">SUP'K · PERSONAL BRAND BLUEPRINT</a>
+    <a class="navlink" href="index.html">ภาพรวม</a>
+    <a class="navlink" href="brand-strategy.html">Brand Strategy</a>
+    <a class="navlink" href="personal-brand.html">Personal Brand</a>
+    <a class="navlink" href="visual-guideline.html">Visual Guideline</a>
+    <a class="navlink active" href="website-example.html">ตัวอย่างเว็บไซต์</a>
+    <a class="navlink" href="content-examples.html">ตัวอย่างคอนเทนต์</a>
+    <a class="navlink" href="governance.html">Governance</a>
+  </div>
+</nav>
+
+<header class="cover">
+  <div class="wrap">
+    <div class="crumb"><a href="index.html">ภาพรวม</a> / Applied Example</div>
+    <span class="eyebrow">● APPLIED EXAMPLE — WEBSITE</span>
+    <h1>ตัวอย่างเว็บไซต์<br>เมื่อนำแบรนด์ใหม่ไป<span>ใช้จริง</span></h1>
+    <p class="lead">เทียบหน้า Home ของ <span class="mono" style="color:var(--yellow);">supk.com</span> ปัจจุบัน กับตัวอย่าง Mockup ที่ปรับตามหลักการในหน้า Visual Guideline — ดูภาพรวมเท่านั้น ยังไม่ใช่ดีไซน์สมบูรณ์ที่พร้อมขึ้นเว็บจริง</p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="headline-block">
+      <span class="kicker">ก่อนปรับ</span>
+      <h2 class="title">เว็บไซต์ supk.com ในปัจจุบัน</h2>
+      <p class="desc">หน้า Home ปัจจุบันเน้นแบนเนอร์ส่วนลดเป็นจุดโฟกัสหลัก ใช้สีเหลือง-แดงจัดจ้านแบบแคมเปญอีคอมเมิร์ซ ซึ่งตรงข้ามกับหลักการที่วางไว้ในหน้า Visual Guideline</p>
+      <span class="chip" style="background:var(--navy); color:var(--yellow); border:none;">📷 ภาพจริงจาก supk.com — ดึงสดจากเว็บปัจจุบัน ไม่ได้จำลอง</span>
+    </div>
+
+    <div class="browser-frame">
+      <div class="bar">
+        <div class="mock-dots"><span></span><span></span><span></span></div>
+        <div class="url">supk.com</div>
+      </div>
+      <div class="before-mock">
+        <div class="before-nav">
+          <div class="b-logo">คณิตครูSupK</div>
+          <div class="b-links"><span>หน้าหลัก</span><span>คอร์สเรียน</span><span>โบรชัวร์และเฉลย</span><span>เด็กเก่ง SupK</span><span>ความประทับใจ</span><span>ติดต่อเรา</span></div>
+        </div>
+        <div class="before-hero">
+          <img src="https://www.supk.com/manage/uploads/banner_2026-06-02_18-20-49.jpg" alt="แบนเนอร์หน้าแรกปัจจุบันของ supk.com" loading="lazy">
+        </div>
+        <div class="before-search"><div class="b-bar">🔍 พิมพ์ข้อความที่ต้องการค้นหา...</div></div>
+      </div>
+    </div>
+
+    <div class="rule-grid" style="margin-top:28px;">
+      <div class="rule-card bad">
+        <span class="tag">✕ ปัญหาที่พบ</span>
+        <ul>
+          <li>โปรโมชั่นส่วนลดเป็นจุดโฟกัสแรกที่ผู้ปกครองเห็น แทนที่จะเป็นตัวครูหรือผลลัพธ์นักเรียน</li>
+          <li>โทนสีเหลือง-แดงจัดจ้าน ใกล้เคียงแคมเปญอีคอมเมิร์ซมากกว่าแบรนด์การศึกษา</li>
+          <li>ไม่มีข้อความ Positioning หรือ Brand Promise ปรากฏในหน้าแรกเลย</li>
+          <li>หน้าตาใกล้เคียงสถาบันกวดวิชาทั่วไป จนตัวตน "ครู" หายไป</li>
+        </ul>
+      </div>
+      <div class="rule-card good">
+        <span class="tag">✓ สิ่งที่ยังเก็บไว้ได้</span>
+        <ul>
+          <li>โครงสร้างเมนูหลักครบถ้วน (คอร์สเรียน, เด็กเก่ง SupK, ความประทับใจ ฯลฯ)</li>
+          <li>มีรูปครูซุปเคอยู่แล้วในหน้าแรก — ใช้ต่อได้ เพียงเปลี่ยนบริบทภาพ</li>
+          <li>มีระบบค้นหาคอร์สที่ผู้ปกครองใช้งานอยู่แล้ว</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="headline-block">
+      <span class="kicker">หลังปรับ</span>
+      <h2 class="title">Mockup หน้า Home เวอร์ชันปรับตามแบรนด์ใหม่</h2>
+      <p class="desc">ใช้ Positioning "เลขไม่ยาก เพราะทุกเรื่องมีวิธีเข้าใจ" ขึ้นนำแทนส่วนลด ใช้เนวี่-เหลืองตามชุดสีแบรนด์ และดึงคำพูดสำหรับผู้ปกครองจาก Messaging Framework มาวางเป็น subtext</p>
+    </div>
+
+    <div class="browser-frame">
+      <div class="bar">
+        <div class="mock-dots"><span></span><span></span><span></span></div>
+        <div class="url">supk.com</div>
+      </div>
+      <div class="mock-page">
+        <div class="mock-nav">
+          <div class="m-logo"><span class="dot">K</span> ครูซุปเค</div>
+          <div class="m-links"><span>คอร์สเรียน</span><span>เรื่องราวลูกศิษย์</span><span>บทความ</span><span>ติดต่อเรา</span></div>
+          <div class="m-cta">จองเรียนทดลอง</div>
+        </div>
+        <div class="mock-hero">
+          <div class="m-photo photo-slot" data-label="ครูซุปเค"><img src="assets/images/hero/teacher-hero.jpg" alt="ครูซุปเค" onerror="this.remove()" style="width:100%;height:100%;object-fit:cover;"><span class="real-tag">📷 รูปถ่ายใหม่ ไม่มีกราฟิกทับ</span></div>
+          <div class="txt">
+            <span class="badge">● ครูผู้เปลี่ยนความกลัวคณิตศาสตร์</span>
+            <h2>เลข<span>ไม่ยาก</span><br>เพราะทุกเรื่องมีวิธีเข้าใจ</h2>
+            <p>เราไม่ได้สอนให้ลูกสอบติดอย่างเดียว แต่สร้างพื้นฐานที่จะอยู่กับลูกไปตลอดชีวิต</p>
+            <div class="m-btns">
+              <span class="m-btn-p">จองเรียนทดลองฟรี</span>
+              <span class="m-btn-o">ดูคอร์สเรียนทั้งหมด</span>
+            </div>
+            <div class="m-trust">
+              <div><b>อดีตตัวแทนโอลิมปิก</b>IMO ประเทศไทย</div>
+              <div><b>นักเรียนนับพันคน</b>สอบติดเป้าหมาย</div>
+            </div>
+          </div>
+        </div>
+        <div class="mock-eq">
+          <span>เข้าใจ</span><em>→</em><span>สนุก</span><em>→</em><span>รัก</span><em>→</em><span>ทำได้ดี</span><em>→</em><span style="border-color:var(--orange);color:var(--orange);">อนาคตเปลี่ยน</span>
+        </div>
+        <div class="mock-section">
+          <div class="m-kicker">STUDENT SUCCESS</div>
+          <h3>เรื่องราวลูกศิษย์</h3>
+          <div class="m-quote">
+            <div class="m-quote-row">
+              <div class="photo-slot m-quote-avatar" data-label="รูป">
+                <img src="assets/images/students/success-01.jpg" alt="น้องณฐกร คุ้มมั่น" onerror="this.remove()">
+              </div>
+              <div>
+                <p>"ที่ 1 สอบเข้า ม.4 เตรียมอุดมศึกษา สาย วิทย์-คณิต"</p>
+                <span>— น้องณฐกร คุ้มมั่น, รร.เตรียมอุดมศึกษา</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mock-section alt">
+          <div class="m-kicker">LEARN BETTER · EDUCATION INSIGHT</div>
+          <h3>บทความแนะนำการติวคณิต</h3>
+          <div class="m-card-row">
+            <div class="m-card"><div class="top photo-slot" data-label="Learn Better"><img src="assets/images/articles/learn-better-01.png" alt="" onerror="this.remove()"></div><div class="body"><b>เทคนิคแก้โจทย์แบบเข้าใจ</b><span>Learn Better</span></div></div>
+            <div class="m-card"><div class="top photo-slot" data-label="Education Insight"><img src="assets/images/articles/education-insight-01.png" alt="" onerror="this.remove()"></div><div class="body"><b>เตรียมสอบเข้า ม.4 อย่างไรดี</b><span>Education Insight</span></div></div>
+            <div class="m-card"><div class="top photo-slot" data-label="Parent Guide"><img src="assets/images/articles/parent-guide-01.png" alt="" onerror="this.remove()"></div><div class="body"><b>ผู้ปกครองควรสนับสนุนลูกยังไง</b><span>Parent Guide</span></div></div>
+          </div>
+        </div>
+        <div class="mock-footer"><b>ครูซุปเค</b> · SupK Center — สาขาสีลม · 02-6368605-6</div>
+      </div>
+    </div>
+
+    <div class="found-grid" style="margin-top:28px;">
+      <div class="found-card"><b>สิ่งที่เปลี่ยน</b><p>Hero เปลี่ยนจากส่วนลดเป็น Positioning + Messaging สำหรับผู้ปกครอง ใช้พื้นหลังเนวี่แทนเหลือง-แดงจัดจ้าน</p></div>
+      <div class="found-card"><b>สิ่งที่เพิ่ม</b><p>"สมการแห่งความมั่นใจ" เป็นแถบกราฟิกลายเซ็นแบรนด์ และการ์ดลูกศิษย์/บทความตาม Content Pillars</p></div>
+      <div class="found-card"><b>สิ่งที่ตัดออก</b><p>แบนเนอร์โปรโมชั่นจัดจ้าน และ badge พันธมิตรที่ไม่เกี่ยวกับตัวตนครู เพื่อให้ตัวตน "ครู" เป็นจุดโฟกัสหลัก</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;">
+    <div>
+      <span class="kicker">ต่อไป</span>
+      <h2 class="title" style="margin-bottom:0;">ตัวอย่างคอนเทนต์ — โพสต์จริงต่อ Pillar</h2>
+    </div>
+    <a class="btn btn-primary" href="content-examples.html">ไปหน้าถัดไป →</a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-links">
+      <a href="index.html">ภาพรวม</a>
+      <a href="brand-strategy.html">Brand Strategy</a>
+      <a href="personal-brand.html">Personal Brand</a>
+      <a href="visual-guideline.html">Visual Guideline</a>
+      <a href="website-example.html">ตัวอย่างเว็บไซต์</a>
+      <a href="content-examples.html">ตัวอย่างคอนเทนต์</a>
+      <a href="governance.html">Governance</a>
+    </div>
+    <p><b>ครูซุปเค (Sup'K)</b> — Personal Brand Blueprint Draft v1.0</p>
+  </div>
+</footer>
+
+</body>
+</html>
