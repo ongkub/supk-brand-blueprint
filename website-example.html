@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800&family=Sarabun:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/brand.css">
+<script src="assets/nav.js" defer></script>
 <style>
   /* page-only styles for the Home-page mockup inside the browser frame */
   .mock-dots span{width:10px;height:10px;border-radius:50%;display:inline-block;}
@@ -90,9 +91,14 @@
     <a class="navlink" href="brand-strategy.html">Brand Strategy</a>
     <a class="navlink" href="personal-brand.html">Personal Brand</a>
     <a class="navlink" href="visual-guideline.html">Visual Guideline</a>
-    <a class="navlink active" href="website-example.html">ตัวอย่างเว็บไซต์</a>
-    <a class="navlink" href="content-examples.html">ตัวอย่างคอนเทนต์</a>
     <a class="navlink" href="governance.html">Governance</a>
+    <div class="nav-dropdown-wrap">
+      <button type="button" class="navlink has-dropdown active">ตัวอย่างจริง <span class="caret">▾</span></button>
+      <div class="dropdown-menu">
+        <a href="website-example.html" class="active">ตัวอย่างเว็บไซต์</a>
+        <a href="content-examples.html">ตัวอย่างคอนเทนต์</a>
+      </div>
+    </div>
   </div>
 </nav>
 
@@ -244,9 +250,9 @@
       <a href="brand-strategy.html">Brand Strategy</a>
       <a href="personal-brand.html">Personal Brand</a>
       <a href="visual-guideline.html">Visual Guideline</a>
+      <a href="governance.html">Governance</a>
       <a href="website-example.html">ตัวอย่างเว็บไซต์</a>
       <a href="content-examples.html">ตัวอย่างคอนเทนต์</a>
-      <a href="governance.html">Governance</a>
     </div>
     <p><b>ครูซุปเค (Sup'K)</b> — Personal Brand Blueprint Draft v1.0</p>
   </div>
