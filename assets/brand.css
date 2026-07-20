@@ -42,20 +42,20 @@ nav.site-nav{
 nav.site-nav .wrap{display:flex; align-items:center; gap:6px; overflow-x:auto; padding-top:12px; padding-bottom:12px; scrollbar-width:none;}
 nav.site-nav .wrap::-webkit-scrollbar{display:none;}
 nav.site-nav .brand{color:var(--yellow); font-family:'Kanit'; font-weight:700; font-size:15px; white-space:nowrap; margin-right:18px; letter-spacing:.3px; text-decoration:none;}
-nav.site-nav a.navlink{
+nav.site-nav a.navlink, nav.site-nav button.navlink{
   color:#DCE4F2; text-decoration:none; font-size:14px; font-weight:500;
   white-space:nowrap; padding:7px 13px; border-radius:100px; transition:.15s;
+  border:none; background:none; font-family:inherit; -webkit-appearance:none; appearance:none;
 }
-nav.site-nav a.navlink:hover, nav.site-nav a.navlink:focus-visible{background:var(--navy-soft); color:var(--white); outline:none;}
-nav.site-nav a.navlink.active{background:var(--yellow); color:var(--navy); font-weight:600;}
+nav.site-nav a.navlink:hover, nav.site-nav a.navlink:focus-visible,
+nav.site-nav button.navlink:hover, nav.site-nav button.navlink:focus-visible{background:var(--navy-soft); color:var(--white); outline:none;}
+nav.site-nav a.navlink.active, nav.site-nav button.navlink.active{background:var(--yellow); color:var(--navy); font-weight:600;}
 
 /* ---------- nav dropdown (Applied Examples group) ---------- */
 .nav-dropdown-wrap{position:relative; display:inline-block;}
 button.navlink.has-dropdown{
-  font-family:inherit; cursor:pointer; background:none;
-  display:inline-flex; align-items:center; gap:5px;
+  cursor:pointer; display:inline-flex; align-items:center; gap:5px;
 }
-button.navlink.has-dropdown.active{background:var(--yellow); color:var(--navy); font-weight:600;}
 .navlink.has-dropdown .caret{font-size:9px; transition:transform .15s;}
 .navlink.has-dropdown.open .caret{transform:rotate(180deg);}
 .dropdown-menu{
